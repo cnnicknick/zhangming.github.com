@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta charset="utf-8">
+ </head>
+
+ <body>
+  <script>
+         document.write('<svg viewBox="0 0 100 100" style="margin:auto" display=block height=' + (k = Math.min(innerHeight, j = innerWidth)) + 'px stroke=#fff text-anchor=middle stroke-width=.2px font-size=8px font-family=Arial>\
+                        <circle stroke-width=.5px cx=50 cy=50 r=45 fill=#333 stroke=#000 />\
+                        no inline svg \
+                        <text x=50 y=39>clock</text>\
+                        <rect  x=40.5 y=58 width=20 height=8 />');
+
+        for(i = 13; --i; g = 0)
+        document.write('<text fill=#fff stroke=none x=' + (Math.cos(i * Math.PI / 6 ) * 36 + 50) + ' y=' + (Math.sin(i * Math.PI / 6) * 36 + 52) + ' >' + ((i + 2) % 12 + 1) + '</text>\
+                        <line x1=50 x2=50 y1=5 y2=10 transform=rotate(' + i * 30 + ',50,50) />');
+
+		 document.write('  <text fill=#fff stroke=none x=50 y=65 id=p />\
+                        <line stroke-width=.4px x1=50 x2=50 y1=50 y2=25 id=l stroke=red />\
+                        <line stroke-width=.4px x1=50 x2=50 y1=50 y2=30 id=h />\
+                        <line stroke-width=.4px x1=50 x2=50 y1=50 y2=20 id=m />\
+                        <line x1=50 x2=50 y1=55 y2=15 id=n />\
+                    </svg >');
+
+		 setInterval(onclick = function(e) {
+         
+          // Update hands and period marker
+          d = new Date();
+          o = d.getHours() % 12 * 30 + d.getMinutes() / 2;
+          n.setAttribute('transform', 'rotate(' + 6 * d.getSeconds() + ',50,50)');
+          m.setAttribute('transform', 'rotate(' + 6 * d.getMinutes() + ',50,50)');
+          h.setAttribute('transform', 'rotate(' + o + ',50,50)');
+          l.setAttribute('transform', 'rotate(' + i + ',50,50)');
+          p.textContent = 12 > d.getHours() ? 'AM \u266A' : 'PM \u266A';
+
+          // Check alarm, chop train whistle
+          if (g) {
+            if (1 > Math.abs(i - o) && d.getSeconds() % 2) {
+              g.connect(c.destination);
+            }
+            else {
+              g.disconnect();  
+            }
+          }
+        },
+        200);
+  </script>
+ </body>
+</html>
